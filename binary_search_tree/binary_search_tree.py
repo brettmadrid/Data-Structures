@@ -61,11 +61,25 @@ class BinarySearchTree:
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        cb(self.value)
-        if self.left:
-            self.left.for_each(cb)
-        if self.right:
-            self.right.for_each(cb)
+        # 1st Method Recursively
+        # cb(self.value)
+        # if self.left:
+        #     self.left.for_each(cb)
+        # if self.right:
+        #     self.right.for_each(cb)
+
+        # 2nd Method Iteratively
+        stack = Stack()
+        stack.push(self)  # push node onto the stack
+
+        while stack.len():
+            current_node = stack.pop()
+            # add current_node's right and left children to the stack
+            if current_node.right:
+                stack.push(current_node.right)
+            if current_node.left:
+                stack.push(current_node.left)
+            cb(current_node.value)
 
     # DAY 2 Project -----------------------
 
