@@ -107,9 +107,9 @@ class BinarySearchTree:
         if not node.value:
             return
         else:
-            # create a stack
+            # create a queue
             queue = Queue()
-            # push first node onto the stack
+            # enqueue first node onto the queue
             queue.enqueue(node)
             while queue.len():
                 # dequeue node and print it
@@ -127,7 +127,25 @@ class BinarySearchTree:
     # in an iterative depth first traversal
 
     def dft_print(self, node):
-        pass
+        if not node.value:
+            return
+        else:
+            # create a stack
+            stack = Stack()
+            # push first node onto the stack
+            stack.push(node)
+            while stack.len():
+                # pop node and print it
+                current = stack.pop()
+                print(current.value)
+
+                # check to see of node has any children
+                # if so, add them to the stack
+                if current.left:
+                    stack.push(current.left)
+
+                if current.right:
+                    stack.push(current.right)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
