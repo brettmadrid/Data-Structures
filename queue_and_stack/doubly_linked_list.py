@@ -181,39 +181,3 @@ class DoublyLinkedList:
                 maxValue = currNode.value
             currNode = currNode.next
         return maxValue
-
-
-'''
-    Gets middle value in a linked list
-'''
-
-
-def get_middle(linked_list):
-    slow_pointer = linked_list.head
-    fast_pointer = linked_list.head
-    while fast_pointer is not None:
-        fast_pointer = fast_pointer.next
-        if fast_pointer is not None:
-            fast_pointer = fast_pointer.next
-            slow_pointer = slow_pointer.next
-    return slow_pointer.value
-
-
-'''
-    Reverses a linked list
-'''
-
-
-def reverse_list(linked_list):
-    curr = linked_list.head
-    new = curr.next
-    # this is new tail
-    curr.next = None
-    prev = None
-
-    while new is not None:
-        prev = curr
-        curr = new
-        new = curr.next
-        curr.next = prev
-        linked_list.head = curr
